@@ -1,0 +1,5 @@
+export enum Tarja {
+  SEM_TARJA = 'SEM_TARJA',
+  TARJA_VERMELHA = 'TARJA_VERMELHA',
+  TARJA_PRETA = 'TARJA_PRETA',
+}
