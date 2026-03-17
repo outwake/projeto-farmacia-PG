@@ -6,6 +6,9 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { ProdutoModule } from './produto/produto.module';
 import { Produto } from './produto/entities/produto.entity';
+import { UsuarioModule } from './usuario/usuario.module';
+import { Usuario } from './usuario/entities/usuario.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,10 +18,10 @@ import { Produto } from './produto/entities/produto.entity';
     username: 'root',
     password: 'root',
     database: 'db_projeto_farmacia',
-    entities:[Categoria, Produto],
+    entities:[Categoria, Produto, Usuario],
     synchronize: true,
   }),
-   CategoriaModule, ProdutoModule ],
+   CategoriaModule, ProdutoModule, UsuarioModule, AuthModule ],
 
 
   controllers: [AppController],
