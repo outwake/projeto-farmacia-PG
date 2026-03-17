@@ -5,11 +5,15 @@ import { CreateCategoriaDto } from "../dto/createcategoria.dto";
 import { FaixaEtaria } from "../../enums/faixa-etaria.enum";
 import { Tarja } from "../../enums/tarja.enum";
 import { TipoReceita } from "../../enums/tipo-receita.enum";
+import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 
 
-
+@ApiTags('Categoria')
+@UseGuards(JwtAuthGuard)
 @Controller("/categorias")
+@ApiBearerAuth()
 
 export class CategoriaController{
 
