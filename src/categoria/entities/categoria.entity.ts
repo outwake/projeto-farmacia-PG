@@ -4,6 +4,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { FaixaEtaria } from "../../enums/faixa-etaria.enum";
 import { Tarja } from "../../enums/tarja.enum";
 import { TipoReceita } from "../../enums/tipo-receita.enum";
+import { Produto } from "../../produto/entities/produto.entity";
 
 
 
@@ -51,5 +52,7 @@ export class Categoria{
     tipo_receita: TipoReceita;
 
     //Relacionamento com Produto
+    @OneToMany(()=> Produto,(produto)=> produto.categoria)
+    produto: Produto[];
  
 }

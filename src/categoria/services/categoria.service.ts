@@ -20,7 +20,9 @@ export class CategoriaService{
 
     //Listar tudo
     async findAll():Promise <Categoria[]>{
-        return this.categoriaRepository.find({});
+        return this.categoriaRepository.find({relations:{
+                produto:true
+            }});
     }
 
     //Procurar por Id
@@ -28,6 +30,9 @@ export class CategoriaService{
         const categoria = await this.categoriaRepository.findOne({
             where:{
                 id
+            },
+            relations:{
+                produto:true
             }
             
         })
@@ -42,6 +47,9 @@ export class CategoriaService{
         return this.categoriaRepository.find({
             where:{
                 nome: ILike(`%${nome}%`)
+            },
+            relations:{
+                produto:true
             }
         })
     }
@@ -49,14 +57,21 @@ export class CategoriaService{
     //Procurar por faixa etaria
     async findByFaixaEtaria(faixa_etaria: FaixaEtaria): Promise<Categoria[]>{
         return await this.categoriaRepository.find({
-            where:{faixa_etaria}
+            where:{faixa_etaria},
+            relations:{
+                produto:true
+            }
         })
     }
 
     //Procurar por Tarja
     async findByTarja(tarja: Tarja): Promise<Categoria[]>{
         return await this.categoriaRepository.find({
-            where: {tarja}
+            where: {tarja},
+            relations:{
+                produto:true
+            }
+            
         })
     }
 
@@ -64,6 +79,9 @@ export class CategoriaService{
     async findByReceita(tipo_receita: TipoReceita): Promise<Categoria[]> {
     return this.categoriaRepository.find({
         where: { tipo_receita },
+        relations:{
+                produto:true
+            }
     });
     }
 
